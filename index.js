@@ -28,14 +28,12 @@ app.use(cookieParser());
 
 let caches = {};
 
-
-
 function readFile(file) {
   console.log("Read file function running");
   // promise
   return new Promise((resolve, reject) => {
-      fs.readFile(
-        // 
+    fs.readFile(
+      //
       uploadDirectory + path.sep + file,
       (err, body) => {
         if (err) {
@@ -167,8 +165,19 @@ app.get("/uploaded/:name", (request, response) => {
   //   }
 });
 
+app.get("/planning", (request, response) => {
+  response.sendFile(__dirname + "/views/planning.html");
+});
+
+app.get("/dropbox", (request, response) => {
+  response.sendFile(__dirname + "/views/dropbox.html");
+});
+app.get("/advanced", (request, response) => {
+  response.sendFile(__dirname + "/views/advanced.html");
+});
+
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/index.html");
+  response.sendFile(__dirname + "/views/index.html");
 });
 
 /**********************************************

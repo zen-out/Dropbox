@@ -20,9 +20,17 @@ node index.js
 
 ### Daily Stand Up :hourglass:
 
-| Step           | Where it occurs | How it works |
-| -------------- | :-------------: | :----------: |
-| Be able to get |                 |              |
+| Step                     | Where it occurs | How it works |
+| ------------------------ | :-------------: | :----------: |
+| Create frontend          |                 |              |
+| Create cache             |                 |              |
+| Read File Function       |                 |              |
+| Write File Function      |                 |              |
+| Read directory function  |                 |              |
+| Route to get main page   |                 |              |
+| Route to handle post     |                 |              |
+| Route to get all uploads |                 |              |
+| Create cache             |                 |              |
 
 ## Issues and Resolutions :flashlight:
 
