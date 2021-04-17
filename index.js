@@ -28,6 +28,12 @@ app.use(cookieParser());
 
 let caches = {};
 
+/**********************************************
+ * Read File Function
+ * ==================================
+ * Given file name
+ * It will return file
+ ***********************************************/
 function readFile(file) {
   console.log("Read file function running");
   // promise
@@ -47,7 +53,13 @@ function readFile(file) {
     );
   });
 }
-//
+
+/**********************************************
+ * Write File Function
+ * ==================================
+ * Given name and body
+ * It will upload the file into the upload directory
+ ***********************************************/
 function writeFile(name, body) {
   console.log("Write file function running");
   return new Promise((resolve, reject) => {
@@ -82,19 +94,25 @@ app.post("/files", (request, response) => {
   console.log(request.files);
   caches["hi"] = request.files;
   console.log(caches);
+  // if user uploaded more than one file
   if (request.files.upload instanceof Array) {
     console.log("this is an array ");
+    // loop through the array
     for (let i = 0; i < request.files.upload.length; i++) {
       console.log(request.files.upload[i]);
+      // get the name
       let fileName = request.files.upload[i].name;
+      // get the data
       let fileData = request.files.upload[i].data;
+      // write the file into the directory
+      // as well as save it in the cahce
       caches[fileName] = writeFile(fileName, fileData);
-
       caches[fileName]
         .then(() => {
           console.log("File Name: ", fileName);
           console.log("File Data: ", caches[fileName]);
           console.log("Setting Cookie Here!");
+          // set the cookie here
           response.cookie(fileName, caches[fileName]);
           response.end("it works!");
         })
@@ -106,6 +124,7 @@ app.post("/files", (request, response) => {
     console.log(
       "Not an instance of an array - let's see if this loads"
     );
+    // otherwise
     console.log(request.files);
     let fileName = request.files.upload.name;
     let fileData = request.files.upload.data;
@@ -165,10 +184,6 @@ app.get("/uploaded/:name", (request, response) => {
   //   }
 });
 
-app.get("/planning", (request, response) => {
-  response.sendFile(__dirname + "/views/planning.html");
-});
-
 app.get("/dropbox", (request, response) => {
   response.sendFile(__dirname + "/views/dropbox.html");
 });
@@ -177,7 +192,7 @@ app.get("/advanced", (request, response) => {
 });
 
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
+  response.sendFile(__dirname + "/views/planning.html");
 });
 
 /**********************************************

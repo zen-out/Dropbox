@@ -63,9 +63,6 @@
           <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/planning">Planning</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/dropbox">Dropbox</a>
         </li>
         <li class="nav-item">
@@ -74,7 +71,9 @@
       </ul>
     </nav>
     <br />
-    <div class="container">
+    <div class="container font12">
+      <br />
+      <h1>Dropbox</h1>
       <h3>Functionalities</h3>
       <ul>
         <li>Users will be able to upload files</li>
@@ -94,7 +93,7 @@
         <li>
           Going to home page (method: GET)
           <ul>
-            <li></li>
+            <li>get route</li>
           </ul>
         </li>
         <li>
@@ -123,16 +122,6 @@
             </li>
             <li>
               <code>fs.writeFile(name, callback)</code>
-            </li>
-            <li>
-              <code>fs.readDir(name, callback)</code>
-              <br />
-              <code>
-                fs.readdir(testFolder, <br />(err, files)
-                =><br />
-                { files.forEach(file => { <br />
-                console.log(file); }); });</code
-              >
             </li>
           </ul>
         </li>
@@ -176,7 +165,12 @@
                   Form action = "/files" method = "post"
                   enctype = "multipart/form-data"
                   <ul>
-                    <li>Purpose:</li>
+                    <li>
+                      Purpose: When someone presses submit,
+                      the form data will be submitted to
+                      route /files
+                    </li>
+                    <li>In backend: create post route</li>
                   </ul>
                 </li>
 

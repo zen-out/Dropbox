@@ -25,7 +25,8 @@
   </head>
   <style>
     .codetable {
-      margin: 3vw;
+      margin: 1vw;
+      /* font-size: 1vw; */
     }
     .row {
       border: 1px solid lightblue;
@@ -35,14 +36,14 @@
       background-color: #355db2;
       color: #ffffff;
       text-align: right;
-      padding: 1vw;
+      padding: 0.5;
     }
     .cell {
       padding: 0px;
       background-color: #fff6a6;
     }
     .cellp {
-      line-height: 110%;
+      line-height: 100%;
       color: #05007e;
       padding: 0px;
       margin-top: 0px;
@@ -79,7 +80,7 @@
         <li>
           Going to home page (method: GET)
           <ul>
-            <li></li>
+            <li>get route</li>
           </ul>
         </li>
         <li>
@@ -108,16 +109,6 @@
             </li>
             <li>
               <code>fs.writeFile(name, callback)</code>
-            </li>
-            <li>
-              <code>fs.readDir(name, callback)</code>
-              <br />
-              <code>
-                fs.readdir(testFolder, <br />(err, files)
-                =><br />
-                { files.forEach(file => { <br />
-                console.log(file); }); });</code
-              >
             </li>
           </ul>
         </li>
@@ -161,7 +152,12 @@
                   Form action = "/files" method = "post"
                   enctype = "multipart/form-data"
                   <ul>
-                    <li>Purpose:</li>
+                    <li>
+                      Purpose: When someone presses submit,
+                      the form data will be submitted to
+                      route /files
+                    </li>
+                    <li>In backend: create post route</li>
                   </ul>
                 </li>
 
