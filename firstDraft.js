@@ -22,6 +22,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressFileUpload());
 app.use(express.static("uploaded"));
+app.use(express.static("public"));
+
+// const cookieParser = require("cookie-parser");
+// app.use(cookieParser());
 
 let caches = {};
 
@@ -139,11 +143,24 @@ app.post("/files", (request, response) => {
       });
   }
 });
+// function getCookie(request) {
+//   let cookie = request.headers.cookie;
+//   let value = request.headers.cookie.indexOf("=");
+//   let newCookie = cookie.slice(value + 1);
+//   console.log("Cookie key: ", request.params.name);
+//   console.log("Cookie value: ", newCookie);
+//   return cookie.split(" ");
+// }
 
-/**********************************************
- * We can grab the file
- * ==================================
- ***********************************************/
+// app.get("/cookie/:name", (request, response) => {
+//   console.log("Params name: ", request.params.name);
+//   let cookie = getCookie(request);
+//   response.sendFile(
+//     __dirname + `/uploaded/${request.params.name}`
+//   );
+// });
+// console.log(caches["memes.png"]);
+
 app.get("/uploaded/:name", (request, response) => {
   console.log("Params name: ", request.params.name);
   console.log("Uploaded/name function");
@@ -152,10 +169,6 @@ app.get("/uploaded/:name", (request, response) => {
   );
 });
 
-/**********************************************
- * Or we can download it
- * ==================================
- ***********************************************/
 app.get("/caches/:name", (request, response) => {
   if (caches[request.params.name] == null) {
     console.log("reading from file");
